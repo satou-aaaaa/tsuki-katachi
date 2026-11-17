@@ -518,7 +518,7 @@ try {
   check("2段目「なぜそうなる？」の理由：どの種類の問題も5つ（光を受けて光る・太陽との位置・地球が回る・毎日おくれる・昔の暦）のどれかで、5つとも使う", bad.length === 0 && Object.keys(G.GROUPS).join() === "hikari,ichi,jiten,okureru,koyomi" && used.size === 5, bad.join(",")); }
 // 引き継ぎコード（shared-workflows template/qa/transfer-check.mjs）
 try {
-  const sample = { "tkk-v1": JSON.stringify({ v: 1, tut: true, days: { "2026-11-17": { m: [0, 1, 0, 0, 2], k: ["mika", "mangetsu", "nanchu", "jogen", "izayoi"] } }, hdays: {}, adays: {}, dex: { mika: 1, mangetsu: 1, nanchu: 1, jogen: 1, izayoi: 1 }, runs: {}, kofi: {}, ach: {}, ebest: 7, t: 1 }), "tkk-fs": "3" };
+  const sample = { "tkk-v1": JSON.stringify({ v: 1, tut: true, days: { "2026-11-17": { m: [0, 1, 0, 0, 2], k: ["mika", "mangetsu", "nanchu", "jogen", "izayoi"] } }, hdays: {}, adays: {}, dex: { mika: 1, mangetsu: 1, nanchu: 1, jogen: 1, izayoi: 1 }, runs: {}, kofi: {}, ach: {}, ebest: 7, t: 1 }), "tkk-fs": "3", "tkk-depth": JSON.stringify({ v: 1, rv: { "mika|2026-11-17:d0": { s: 1, due: "2026-11-20", t: 1 } } }) };
   await checkTransfer({ browser, url, game: "tsuki-katachi", sample, check, open: async (pg) => { if (await pg.locator("#howto[open]").count()) await pg.click("#howto-ok"); } });
 } catch (e) { check("引き継ぎの検査が最後まで動く", false, e.message.split("\n")[0]); }
 await browser.close();
